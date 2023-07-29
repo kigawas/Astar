@@ -84,6 +84,7 @@ moonbeam-rpc-primitives-txpool = { workspace = true, optional = true }
 
 # chain-extensions
 pallet-chain-extension-assets = { workspace = true }
+pallet-chain-extension-ecies = { workspace = true }
 
 # benchmarking
 array-bytes = { workspace = true }

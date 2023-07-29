@@ -1152,15 +1152,39 @@ dependencies = [
 ]
 
 [[package]]
+name = "chacha20"
+version = "0.9.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "c3613f74bd2eac03dad61bd53dbe620703d4371614fe0bc3b9f04dd36fe4e818"
+dependencies = [
+ "cfg-if",
+ "cipher 0.4.4",
+ "cpufeatures",
+]
+
+[[package]]
 name = "chacha20poly1305"
 version = "0.9.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "a18446b09be63d457bbec447509e85f662f32952b035ce892290396bc0b0cff5"
 dependencies = [
  "aead 0.4.3",
- "chacha20",
+ "chacha20 0.8.2",
  "cipher 0.3.0",
- "poly1305",
+ "poly1305 0.7.2",
+ "zeroize",
+]
+
+[[package]]
+name = "chacha20poly1305"
+version = "0.10.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "10cd79432192d1c0f4e1a0fef9527696cc039165d729fb41b3f4f4f354c2dc35"
+dependencies = [
+ "aead 0.5.2",
+ "chacha20 0.9.1",
+ "cipher 0.4.4",
+ "poly1305 0.8.0",
  "zeroize",
 ]
 
@@ -1218,6 +1242,7 @@ checksum = "773f3b9af64447d2ce9850330c473515014aa235e6a783b02db81ff39e4a3dad"
 dependencies = [
  "crypto-common",
  "inout",
+ "zeroize",
 ]
 
 [[package]]
@@ -5499,6 +5524,7 @@ dependencies = [
  "pallet-block-reward",
  "pallet-chain-extension-assets",
  "pallet-chain-extension-dapps-staking",
+ "pallet-chain-extension-ecies",
  "pallet-chain-extension-xvm",
  "pallet-collective",
  "pallet-contracts",
@@ -6894,6 +6920,27 @@ dependencies = [
  "pallet-dapps-staking",
  "parity-scale-codec",
  "scale-info",
+ "sp-core",
+ "sp-runtime",
+ "sp-std",
+]
+
+[[package]]
+name = "pallet-chain-extension-ecies"
+version = "0.1.0"
+dependencies = [
+ "chacha20poly1305 0.10.1",
+ "frame-support",
+ "frame-system",
+ "hkdf",
+ "libsecp256k1",
+ "log",
+ "num-traits",
+ "pallet-contracts",
+ "pallet-contracts-primitives",
+ "parity-scale-codec",
+ "scale-info",
+ "sha2 0.10.7",
  "sp-core",
  "sp-runtime",
  "sp-std",
@@ -9765,6 +9812,17 @@ dependencies = [
  "cpufeatures",
  "opaque-debug 0.3.0",
  "universal-hash 0.4.1",
+]
+
+[[package]]
+name = "poly1305"
+version = "0.8.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "8159bd90725d2df49889a078b54f4f79e87f1f8a8444194cdca81d38f5393abf"
+dependencies = [
+ "cpufeatures",
+ "opaque-debug 0.3.0",
+ "universal-hash 0.5.1",
 ]
 
 [[package]]
@@ -12644,7 +12702,7 @@ checksum = "5ccba027ba85743e09d15c03296797cad56395089b832b48b5a5217880f57733"
 dependencies = [
  "aes-gcm 0.9.4",
  "blake2",
- "chacha20poly1305",
+ "chacha20poly1305 0.9.1",
  "curve25519-dalek 4.0.0-rc.1",
  "rand_core 0.6.4",
  "ring",

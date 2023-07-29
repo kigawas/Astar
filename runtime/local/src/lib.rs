@@ -830,6 +830,7 @@ impl pallet_contracts::Config for Runtime {
         DappsStakingExtension<Self>,
         XvmExtension<Self, Xvm>,
         AssetsExtension<Self, pallet_chain_extension_assets::weights::SubstrateWeight<Self>>,
+        EciesExtension<Self>,
     );
     type Schedule = Schedule;
     type AddressGenerator = pallet_contracts::DefaultAddressGenerator;
